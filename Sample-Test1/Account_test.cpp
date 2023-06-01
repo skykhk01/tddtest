@@ -20,3 +20,17 @@ TEST_F(AccountTest, Withdraw) {
 	account.withdraw(600);
 	EXPECT_EQ(9400, account.getBalance());
 }
+
+TEST_F(AccountTest, Interest) {
+	account.applyInterestToBalance();
+	EXPECT_EQ(10500, account.getBalance());
+}
+
+TEST_F(AccountTest, SetInterest) {
+	account.setInterest(10);
+	EXPECT_EQ(0.1, account.getInterest());
+}
+
+TEST_F(AccountTest, ExpectBalanceAfterYears) {
+	EXPECT_EQ(16284, account.expectBalanceAfter(10));
+}
